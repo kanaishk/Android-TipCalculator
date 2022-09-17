@@ -32,6 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:checkedButton="@id/amazing_rating"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/performanceHeader">
 
@@ -57,22 +58,25 @@
 
     <Switch
         android:id="@+id/round_switch"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:checked="true"
         android:minHeight="48dp"
         android:text="@string/round_switch"
         android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/radioGroup"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/calculate_button"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:contentDescription="@string/calculate_button"
         android:text="@string/calculate_button"
         app:iconPadding="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/round_switch" />
 
