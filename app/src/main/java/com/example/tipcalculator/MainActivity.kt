@@ -1,8 +1,11 @@
 package com.example.tipcalculator
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import com.example.tipcalculator.databinding.ActivityMainBinding
 import java.text.NumberFormat
@@ -19,10 +22,12 @@ class MainActivity : AppCompatActivity() {
         binding.calculateButton.setOnClickListener {
             calculateTip()
         }
+
+        binding.costInputEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode) }
     }
 
     private fun calculateTip() {
-        val costOfService: Double? = binding.costInput.text.toString().toDoubleOrNull()
+        val costOfService: Double? = binding.costInputEditText.text.toString().toDoubleOrNull()
         val tipAmount: TextView = binding.tipAmount
         if(costOfService == null) {
             tipAmount.text = ""
@@ -47,5 +52,16 @@ class MainActivity : AppCompatActivity() {
     private fun displayTip(tip: Double, tipAmount: TextView) {
         tipAmount.text = getString(R.string.tip_amount, NumberFormat.getCurrencyInstance().format(tip))
         tipAmount.visibility = View.VISIBLE
+    }
+
+    private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+            // Hide the keyboard
+            val inputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+            return true
+        }
+        return false
     }
 }
