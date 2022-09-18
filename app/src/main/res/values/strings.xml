@@ -7,6 +7,5 @@
     <string name="ok_rating">OK (15%)</string>
     <string name="round_switch">Round up tip?</string>
     <string name="calculate_button">Calculate</string>
-    <string name="tip_amt_header">Tip Amount</string>
-    <string name="tip_amount">%1$d</string>
+    <string name="tip_amount">Tip Amount: %s</string>
 </resources>
